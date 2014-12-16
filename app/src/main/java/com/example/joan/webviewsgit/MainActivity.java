@@ -1,17 +1,53 @@
 package com.example.joan.webviewsgit;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 
 public class MainActivity extends Activity {
+
+    WebView navegador;
+    ProgressDialog prgDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //codi
+        navegador = (WebView) findViewById(R.id.webkit);
+        navegador.getSettings().setJavaScriptEnabled(true);
+        navegador.loadUrl("http://www.pccomponentes.com/movil/");
+        prgDialog = new ProgressDialog(MainActivity.this);
+        prgDialog.setMessage("Carregant la pàgina web");
+        navegador.setWebViewClient( new WebViewClient(){
+
+            public boolean shouldOverrideUrlLoading(WebView view, String url){
+
+                return false;
+            }
+            public void onPageStarted(WebView view, String url, Bitmap favicon){//
+
+                prgDialog.show();
+
+            }
+            public void onPageFinished(WebView view, String url, Bitmap favicon){//
+
+                super.onPageFinished(view, url);
+                prgDialog.hide();
+
+            }
+
+        });
+        //codi
+
     }
 
 
@@ -35,5 +71,24 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void stopLoadPage(View view) {
+
+        navegador.stopLoading();
+
+    }
+
+    public void previewsPage(View view) {
+
+        navegador.goBack();
+
+    }
+
+    public void nextPage(View view) {
+
+        navegador.goForward();
+
     }
 }

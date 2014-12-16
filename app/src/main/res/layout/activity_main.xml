@@ -9,6 +9,38 @@
 
         android:id="@+id/webkit"
         android:layout_width="fill_parent"
-        android:layout_height="449dp"/>
+        android:layout_height="449dp"
+        android:layout_above="@+id/buttonStop"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Stop"
+        android:id="@+id/buttonStop"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:onClick="stopLoadPage"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Anterior"
+        android:id="@+id/buttonAnterior"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="previewsPage"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Seguent"
+        android:id="@+id/buttonSeguent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:onClick="nextPage" />
 
 </RelativeLayout>
